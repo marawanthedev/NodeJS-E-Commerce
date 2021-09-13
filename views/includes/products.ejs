@@ -1,0 +1,19 @@
+ <main>
+        <h1><%= docTitle %></h1>
+        
+
+        <%if( prods!== undefined &&  prods.length >0){ %>
+            <div class="grid">
+            <% for (let product of prods){ %>
+           <a href="/shop/product-detail">
+        <%- include("./product.ejs",{product:product}) %>
+        </a>
+        
+            <% } %>
+        </div>
+       
+
+    <% } else{ %>
+        <h1>No more products</h1>
+    <% } %>
+    </main>

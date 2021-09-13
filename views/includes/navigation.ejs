@@ -1,0 +1,12 @@
+ <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a href="/shop" class="<%= path==='/shop' ? 'active' : null %>">Home</a></li>
+                <li class="main-header__item"><a href="/shop/product-list" class="<%= path==='/shop/product-list' ? 'active' : null %>">Shop</a></li>
+                <!-- conditional classing -->
+                <li class="main-header__item"><a class="<%= path==='/cart' ? 'active' : null %>" href="/shop/cart">Cart</a></li>
+                <li class="main-header__item"><a class="<%= path==='/admin/add' ? 'active' : null %>" href="/admin/add">Add Product</a></li>
+                 <li class="main-header__item"><a class="<%= path==='/admin/products' ? 'active' : null %>" href="/admin/products">Admin products</a></li>
+            </ul>
+        </nav>
+    </header>
