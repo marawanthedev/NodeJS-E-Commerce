@@ -5,10 +5,7 @@
         <%if( prods!== undefined &&  prods.length >0){ %>
             <div class="grid">
             <% for (let product of prods){ %>
-           <a href="/shop/product-detail">
-        <%- include("./product.ejs",{product:product}) %>
-        </a>
-        
+                    <%- include("./product.ejs",{product:product,mode:mode}) %>
             <% } %>
         </div>
        

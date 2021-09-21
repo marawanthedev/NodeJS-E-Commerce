@@ -14,11 +14,17 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
-  console.log(req);
-  res.render("shop/product-detail", {
-    product: { title: "hello" },
-    docTitle: "Product detail",
-    path: "/shop/product-detail",
+  Product.getProductById(req.params.productId, (product) => {
+    res.render("shop/product-detail", {
+      product: {
+        title: product.title,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        description: product.description,
+      },
+      docTitle: "Product detail",
+      path: "/shop/product-detail",
+    });
   });
 };
 
@@ -52,17 +58,17 @@ exports.getShop = (req, res, next) => {
   });
 };
 
-exports.getCart = (req, res, next) => {
-  res.render("shop/cart", {
-    product: { title: "hello" },
-    docTitle: "Cart",
-    path: "/shop/cart",
-  });
-};
-
 exports.getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     docTitle: "checkout",
     path: "/shop/checkout",
+  });
+};
+
+exports.getOrders = (req, res, next) => {
+  res.render("shop/order", {
+    path: "/shop/orders",
+    docTitle: "orders",
+    path: "/shop/orders",
   });
 };

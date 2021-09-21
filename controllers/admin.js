@@ -21,8 +21,7 @@ exports.postAddProduct = (req, res, next) => {
   // body is now parsed because of body parser package
   //   it will parsed as object with each name of each input
   // if its only post it will display the res send
-
-  const product = new Product(req.body.title);
+  const product = new Product(req.body);
   product.save();
   res.redirect("/shop/product-list");
 

@@ -2,15 +2,15 @@
     width: 20rem;
     max-width: 90%;
     margin: auto;
- 
+
 }
 
 .product-item {
     width: 20rem;
-    max-width: 95%;
-    cursor:pointer;
-     text-decoration:none !important;
-    color:black;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: black;
+    margin: 12rem 0;
 }
 
 .product__title {

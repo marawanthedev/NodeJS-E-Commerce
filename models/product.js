@@ -24,30 +24,50 @@ const getProductsFromFile = (cb) => {
     cb(JSON.parse(fileContent));
   });
 };
+const getProductFromFile = (cb, productId) => {
+  // i need to use a callback
+  // since that this async so it will cause rendering error
+
+  fs.readFile(getProductsFilePath(), (err, fileContent) => {
+    if (err) {
+      if (cb) cb([]);
+    }
+    const products = JSON.parse(fileContent);
+
+    let product = products.find(
+      (item) => item.id.toString() === productId.toString()
+    );
+
+    if (cb) cb(product);
+  });
+};
 
 const writeProductToFile = (products) => {
   fs.writeFile(getProductsFilePath(), JSON.stringify(products), (err) =>
     console.log(err)
   );
 };
+
 module.exports = class Product {
-  constructor(title) {
-    this.title = title;
+  constructor(product) {
+    this.id = Math.random().toString();
+    this.title = product.title;
+    this.imageUrl = product.imageUrl;
+    this.price = product.price;
+    this.description = product.description;
   }
   save() {
     // this will get to main module         folder name  file name
     let products = [];
-
     // retrieve current product in file
     getProductsFromFile((fileData) => {
       if (fileData !== null && fileData !== undefined && fileData !== []) {
         products = fileData;
       }
-      
+
       products.push(this);
 
       writeProductToFile(products);
-
     });
   }
 
@@ -55,5 +75,8 @@ module.exports = class Product {
   static fetchAll(cb) {
     getProductsFromFile(cb);
   }
-  
+
+  static getProductById(productId, cb) {
+    getProductFromFile(cb, productId);
+  }
 };
